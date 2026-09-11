@@ -9,6 +9,18 @@ model. A React "AI Execution Debugger" gives full observability: validation
 scores, failure type, recovery strategy, retry count, fallback usage, the
 complete execution trace, and latency.
 
+## Live Demo
+
+| | URL |
+|---|---|
+| **Frontend (Debugger)** | https://ai-response-quality-gate.vercel.app |
+| **Backend API docs** | https://ai-response-quality-gate.onrender.com/docs |
+| **GitHub repo** | https://github.com/HarshithaPethuraj/AI-response-quality-gate |
+
+> **Note:** The backend runs on Render's free tier and may take 30–50 seconds
+> to wake up on the first request after inactivity. Open the API docs link
+> first to warm it up before using the frontend.
+
 ## Architecture
 
 ```
