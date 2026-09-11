@@ -1,0 +1,34 @@
+# Render deployment blueprint for the FastAPI backend.
+# In Render: New -> Blueprint -> pick this repo. It reads this file.
+services:
+  - type: web
+    name: quality-gate-api
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PRIMARY_PROVIDER
+        value: openai
+      - key: PRIMARY_MODEL
+        value: gpt-4o-mini
+      - key: FALLBACK_PROVIDER
+        value: openai
+      - key: FALLBACK_MODEL
+        value: gpt-4o
+      - key: JUDGE_PROVIDER
+        value: openai
+      - key: JUDGE_MODEL
+        value: gpt-4o
+      - key: GROUNDING_THRESHOLD
+        value: "0.7"
+      - key: COMPLETENESS_THRESHOLD
+        value: "0.7"
+      - key: QUALITY_THRESHOLD
+        value: "0.7"
+      - key: MAX_RETRIES
+        value: "3"
+      # OPENAI_API_KEY is intentionally NOT here — set it as a secret in the
+      # Render dashboard (Environment tab) so it never lands in the repo.
+      - key: OPENAI_API_KEY
+        sync: false
